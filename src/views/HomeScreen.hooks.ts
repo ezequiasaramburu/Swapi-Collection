@@ -1,7 +1,8 @@
-import {useFetchPeople} from 'src/api/apiProvider';
+import {useFetchPeople, useFetchStarships, useFetchVehicles} from 'src/api/apiProvider';
 
 export const useHomeScreen = () => {
-  const {data, error, isLoading} = useFetchPeople();
+  const {data, error, isLoading} = useFetchVehicles();
+  // set data on context for details screen
 
   return {
     data,
