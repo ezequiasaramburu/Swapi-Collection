@@ -22,5 +22,6 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 8,
     fontWeight: 'bold',
+    color: '#000',
   },
 });

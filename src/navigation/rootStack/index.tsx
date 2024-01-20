@@ -18,7 +18,7 @@ export const RootStack: React.FC = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{title: 'HOME'}}
+        options={{title: 'CHARACTERS'}}
       />
     </Stack.Navigator>
   );
