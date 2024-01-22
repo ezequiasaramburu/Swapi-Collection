@@ -1,5 +1,5 @@
 import React from 'react';
-import {RootStackScreenProps} from 'src/navigation/rootStack';
+import {DrawerNavigatorScreenProps} from 'src/navigation/drawerNavigator';
 import {FlatList, Text} from 'react-native';
 import {useHomeScreen} from './HomeScreen.hooks';
 import {Card} from 'src/components/Card';
@@ -13,7 +13,9 @@ const RenderItem: React.FC<{
   return <Card data={item} onPress={() => onPressItem(item)} />;
 };
 
-export const HomeScreen: React.FC<RootStackScreenProps<'Home'>> = ({}) => {
+export const HomeScreen: React.FC<
+  DrawerNavigatorScreenProps<'HomeScreen'>
+> = ({}) => {
   const {
     data,
     error,
