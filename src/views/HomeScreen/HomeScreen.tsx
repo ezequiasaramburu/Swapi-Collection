@@ -4,6 +4,7 @@ import {FlatList, Text} from 'react-native';
 import {useHomeScreen} from './HomeScreen.hooks';
 import {ItemDetailsModal} from 'src/components/Modal';
 import {ListItem} from './components/ListItem';
+import {Loader} from 'src/components/Loader';
 
 export const HomeScreen: React.FC<
   DrawerNavigatorScreenProps<'HomeScreen'>
@@ -19,7 +20,7 @@ export const HomeScreen: React.FC<
   } = useHomeScreen();
 
   if (isLoading) {
-    return <Text>Loading...</Text>;
+    return <Loader />;
   }
   if (error) {
     return <Text>Error</Text>;
