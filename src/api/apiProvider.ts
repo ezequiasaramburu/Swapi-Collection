@@ -28,17 +28,17 @@ export const apiProvider = {
 };
 
 export const useFetchPeople = (options?: UseQueryOptions<IPeople[]>) => {
-  return useQuery<IPeople[]>('People', apiProvider.fetchPeople, options);
+  return useQuery<IPeople[]>(['People'], apiProvider.fetchPeople, options);
 };
 
 export const useFetchStarships = (options?: UseQueryOptions<IStarship[]>) => {
   return useQuery<IStarship[]>(
-    'Starships',
+    ['Starships'],
     apiProvider.fetchStarships,
     options,
   );
 };
 
 export const useFetchVehicles = (options?: UseQueryOptions<IVehicle[]>) => {
-  return useQuery<IVehicle[]>('Vehicles', apiProvider.fetchVehicles, options);
+  return useQuery<IVehicle[]>(['Vehicles'], apiProvider.fetchVehicles, options);
 };

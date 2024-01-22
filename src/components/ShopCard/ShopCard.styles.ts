@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 16,
     marginVertical: 12,
-    flexDirection: 'row',
+    flexDirection: 'column',
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
@@ -20,9 +20,16 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     marginBottom: 8,
     fontWeight: 'bold',
     color: colors.black,
+  },
+  info: {
+    fontSize: 18,
+    marginBottom: 12,
+  },
+  footer: {
+    alignItems: 'flex-end',
   },
 });

@@ -1,16 +1,17 @@
 import {StyleSheet} from 'react-native';
+import colors from 'src/style/color';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: colors.lightBackground,
     justifyContent: 'center',
     alignContent: 'center',
   },
   view: {
     paddingHorizontal: 16,
     paddingVertical: 20,
-    backgroundColor: '#FFF',
+    backgroundColor: colors.white,
     borderRadius: 5,
     marginHorizontal: 16,
   },
@@ -18,12 +19,12 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     fontWeight: 'bold',
-    color: '#000',
+    color: colors.black,
   },
   itemDetail: {
     fontSize: 20,
     marginLeft: 5,
-    color: '#0e38f0',
+    color: colors.lightBlue,
   },
   buttonContainer: {
     flexDirection: 'row',

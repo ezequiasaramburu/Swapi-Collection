@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import IPeople from 'src/types/people';
 import {styles} from './Card.styles';
+import IPeople from 'src/types/people';
 
 interface ICardProps {
   data: IPeople;

@@ -1,27 +1,44 @@
 import React from 'react';
-import {Button, Text} from 'react-native';
-import {useProductScreen} from './ShopScreen.hooks';
+import {Text, SectionList} from 'react-native';
+import {useShopScreen} from './ShopScreen.hooks';
 import {DrawerNavigatorScreenProps} from 'src/navigation/drawerNavigator';
+import {RenderItem} from './components/ListItem';
+import {ListHeader} from './components/ListHeader';
+import IVehicle from 'src/types/vehicle';
+import IStarship from 'src/types/starship';
 
-export const ShopScreen: React.FC<DrawerNavigatorScreenProps<'ShopScreen'>> = ({
-  navigation,
-}) => {
-  const {error, isLoading} = useProductScreen();
+export const ShopScreen: React.FC<
+  DrawerNavigatorScreenProps<'ShopScreen'>
+> = ({}) => {
+  const {vehicle, starship} = useShopScreen();
 
-  if (isLoading) {
+  if (vehicle.isLoading || starship.isLoading) {
     return <Text>Loading...</Text>;
   }
-  if (error) {
+  if (vehicle.error || starship.error) {
     return <Text>Error</Text>;
   }
 
+  const data: {title: string; data: (IVehicle | IStarship)[]}[] = [
+    {title: 'VEHICLES', data: vehicle.data || []},
+    {title: 'STARHIPS', data: starship.data || []},
+  ];
+
   return (
     <>
-      <Text>{'Products List'}</Text>
-      <Button
-        onPress={() => navigation.navigate('ProductDetailScreen')}
-        title="Detalles"
-        color="#841584"
+      <SectionList
+        sections={data}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => (
+          <RenderItem
+            item={item}
+            onPressItem={() => console.log('item pressed')}
+          />
+        )}
+        stickySectionHeadersEnabled={false}
+        renderSectionHeader={({section: {title}}) => (
+          <ListHeader title={title} />
+        )}
       />
     </>
   );

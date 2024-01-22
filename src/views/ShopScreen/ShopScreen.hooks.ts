@@ -1,11 +1,11 @@
-import {useFetchVehicles} from 'src/api/apiProvider';
+import {useFetchStarships, useFetchVehicles} from 'src/api/apiProvider';
 
-export const useProductScreen = () => {
-  const {data, error, isLoading} = useFetchVehicles();
+export const useShopScreen = () => {
+  const vehicle = useFetchVehicles();
+  const starship = useFetchStarships();
 
   return {
-    data,
-    isLoading,
-    error,
+    vehicle,
+    starship,
   };
 };
