@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, SectionList} from 'react-native';
+import {SectionList} from 'react-native';
 import {useShopScreen} from './ShopScreen.hooks';
 import {DrawerNavigatorScreenProps} from 'src/navigation/drawerNavigator';
 import {Loader} from 'src/components/Loader';
@@ -7,17 +7,18 @@ import {RenderItem} from './components/ListItem';
 import {ListHeader} from './components/ListHeader';
 import IVehicle from 'src/types/vehicle';
 import IStarship from 'src/types/starship';
+import {ErrorCatcher} from '../../components/ErrorCatcher';
 
 export const ShopScreen: React.FC<
   DrawerNavigatorScreenProps<'ShopScreen'>
 > = ({}) => {
-  const {vehicle, starship} = useShopScreen();
+  const {vehicle, starship, handleRetry} = useShopScreen();
 
   if (vehicle.isLoading || starship.isLoading) {
     return <Loader />;
   }
   if (vehicle.error || starship.error) {
-    return <Text>Error</Text>;
+    return <ErrorCatcher onRetry={handleRetry} />;
   }
 
   const data: {title: string; data: (IVehicle | IStarship)[]}[] = [

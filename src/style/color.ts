@@ -5,6 +5,7 @@ const colors = {
   lightGray: '#D8D8D8',
   silverGray: '#BEBEBE',
   white: '#FFFFFF',
+  error: '#ff0033',
   lightBackground: 'rgba(0, 0, 0, 0.5)',
 };
 

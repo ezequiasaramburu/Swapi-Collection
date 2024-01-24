@@ -5,25 +5,25 @@ import {useHomeScreen} from './HomeScreen.hooks';
 import {ItemDetailsModal} from 'src/components/Modal';
 import {ListItem} from './components/ListItem';
 import {Loader} from 'src/components/Loader';
+import {ErrorCatcher} from '../../components/ErrorCatcher';
 
 export const HomeScreen: React.FC<
   DrawerNavigatorScreenProps<'HomeScreen'>
 > = ({}) => {
   const {
-    data,
-    error,
-    isLoading,
+    people,
     selectedItem,
     isModalOpen,
     openModal,
     closeModal,
+    handleRetry,
   } = useHomeScreen();
 
-  if (isLoading) {
+  if (people.isLoading) {
     return <Loader />;
   }
-  if (error) {
-    return <Text>Error</Text>;
+  if (people.error) {
+    return <ErrorCatcher onRetry={handleRetry} />;
   }
 
   return (
@@ -34,7 +34,7 @@ export const HomeScreen: React.FC<
         onClose={closeModal}
       />
       <FlatList
-        data={data}
+        data={people.data}
         renderItem={({item}) => (
           <ListItem item={item} onPressItem={openModal} />
         )}

@@ -3,7 +3,7 @@ import {useFetchPeople} from 'src/api/apiProvider';
 import IPeople from 'src/types/people';
 
 export const useHomeScreen = () => {
-  const {data, error, isLoading} = useFetchPeople();
+  const people = useFetchPeople();
   const [selectedItem, setSelectedItem] = useState<IPeople | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -17,13 +17,16 @@ export const useHomeScreen = () => {
     setSelectedItem(null);
   };
 
+  const handleRetry = () => {
+    people.refetch();
+  };
+
   return {
-    data,
-    isLoading,
-    error,
+    people,
     selectedItem,
     isModalOpen,
     openModal,
     closeModal,
+    handleRetry,
   };
 };
