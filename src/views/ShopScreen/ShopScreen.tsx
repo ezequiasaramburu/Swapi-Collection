@@ -9,9 +9,9 @@ import IVehicle from 'src/types/vehicle';
 import IStarship from 'src/types/starship';
 import {ErrorCatcher} from '../../components/ErrorCatcher';
 
-export const ShopScreen: React.FC<
-  DrawerNavigatorScreenProps<'ShopScreen'>
-> = ({}) => {
+export const ShopScreen: React.FC<DrawerNavigatorScreenProps<'ShopScreen'>> = ({
+  navigation,
+}) => {
   const {vehicle, starship, handleRetry} = useShopScreen();
 
   if (vehicle.isLoading || starship.isLoading) {
@@ -34,7 +34,9 @@ export const ShopScreen: React.FC<
         renderItem={({item}) => (
           <RenderItem
             item={item}
-            onPressItem={() => console.log('item pressed')}
+            onPressItem={selectedItem =>
+              navigation.navigate('ProductDetailScreen', {selectedItem})
+            }
           />
         )}
         stickySectionHeadersEnabled={false}

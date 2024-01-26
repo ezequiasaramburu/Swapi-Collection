@@ -2,11 +2,13 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {ProductDetailScreen} from 'src/views/ProductDetail';
-import {DrawerNavigator} from '../drawerNavigator';
+import {DrawerNavigator} from 'src/navigation/drawerNavigator';
+import IVehicle from 'src/types/vehicle';
+import IStarship from 'src/types/starship';
 
 export type MainNavigatorParamList = {
   DrawerNavigator: undefined;
-  ProductDetailScreen: undefined;
+  ProductDetailScreen: {selectedItem: IVehicle | IStarship};
 };
 
 const Stack = createNativeStackNavigator<MainNavigatorParamList>();
