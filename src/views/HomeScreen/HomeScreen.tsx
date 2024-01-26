@@ -1,6 +1,6 @@
 import React from 'react';
 import {DrawerNavigatorScreenProps} from 'src/navigation/drawerNavigator';
-import {FlatList, Text} from 'react-native';
+import {FlatList, RefreshControl} from 'react-native';
 import {useHomeScreen} from './HomeScreen.hooks';
 import {ItemDetailsModal} from 'src/components/Modal';
 import {ListItem} from './components/ListItem';
@@ -38,6 +38,12 @@ export const HomeScreen: React.FC<
         renderItem={({item}) => (
           <ListItem item={item} onPressItem={openModal} />
         )}
+        refreshControl={
+          <RefreshControl
+            refreshing={people.isLoading}
+            onRefresh={handleRetry}
+          />
+        }
       />
     </>
   );

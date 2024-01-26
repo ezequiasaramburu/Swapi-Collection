@@ -1,5 +1,5 @@
 import React from 'react';
-import {SectionList} from 'react-native';
+import {RefreshControl, SectionList} from 'react-native';
 import {useShopScreen} from './ShopScreen.hooks';
 import {DrawerNavigatorScreenProps} from 'src/navigation/drawerNavigator';
 import {Loader} from 'src/components/Loader';
@@ -41,6 +41,12 @@ export const ShopScreen: React.FC<
         renderSectionHeader={({section: {title}}) => (
           <ListHeader title={title} />
         )}
+        refreshControl={
+          <RefreshControl
+            refreshing={vehicle.isLoading || starship.isLoading}
+            onRefresh={handleRetry}
+          />
+        }
       />
     </>
   );
