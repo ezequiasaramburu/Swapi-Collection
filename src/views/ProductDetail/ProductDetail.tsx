@@ -2,6 +2,7 @@ import React from 'react';
 import {MainNavigatorScreenProps} from 'src/navigation/mainNavigator';
 import {Text, View} from 'react-native';
 import {styles} from './ProductDetail.styles';
+import Layout from 'src/components/Layout/Layout';
 
 export const ProductDetailScreen: React.FC<
   MainNavigatorScreenProps<'ProductDetailScreen'>
@@ -24,15 +25,17 @@ export const ProductDetailScreen: React.FC<
   ];
 
   return (
-    <View style={styles.container}>
-      {keys.map((elem, index) => {
-        return (
-          <Text style={styles.item} key={index}>
-            {elem.key}
-            <Text style={styles.itemDetail}>{elem.value}</Text>
-          </Text>
-        );
-      })}
-    </View>
+    <Layout>
+      <View style={styles.container}>
+        {keys.map((elem, index) => {
+          return (
+            <Text style={styles.item} key={index}>
+              {elem.key}
+              <Text style={styles.itemDetail}>{elem.value}</Text>
+            </Text>
+          );
+        })}
+      </View>
+    </Layout>
   );
 };

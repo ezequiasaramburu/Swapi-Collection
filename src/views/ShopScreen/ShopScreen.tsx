@@ -7,7 +7,8 @@ import {RenderItem} from './components/ListItem';
 import {ListHeader} from './components/ListHeader';
 import IVehicle from 'src/types/vehicle';
 import IStarship from 'src/types/starship';
-import {ErrorCatcher} from '../../components/ErrorCatcher';
+import {ErrorCatcher} from 'src/components/ErrorCatcher';
+import Layout from 'src/components/Layout/Layout';
 
 export const ShopScreen: React.FC<DrawerNavigatorScreenProps<'ShopScreen'>> = ({
   navigation,
@@ -27,7 +28,7 @@ export const ShopScreen: React.FC<DrawerNavigatorScreenProps<'ShopScreen'>> = ({
   ];
 
   return (
-    <>
+    <Layout>
       <SectionList
         sections={data}
         keyExtractor={(item, index) => index.toString()}
@@ -50,6 +51,6 @@ export const ShopScreen: React.FC<DrawerNavigatorScreenProps<'ShopScreen'>> = ({
           />
         }
       />
-    </>
+    </Layout>
   );
 };

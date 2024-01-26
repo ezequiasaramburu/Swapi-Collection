@@ -5,7 +5,8 @@ import {useHomeScreen} from './HomeScreen.hooks';
 import {ItemDetailsModal} from 'src/components/Modal';
 import {ListItem} from './components/ListItem';
 import {Loader} from 'src/components/Loader';
-import {ErrorCatcher} from '../../components/ErrorCatcher';
+import {ErrorCatcher} from 'src/components/ErrorCatcher';
+import Layout from 'src/components/Layout/Layout';
 
 export const HomeScreen: React.FC<
   DrawerNavigatorScreenProps<'HomeScreen'>
@@ -27,7 +28,7 @@ export const HomeScreen: React.FC<
   }
 
   return (
-    <>
+    <Layout>
       <ItemDetailsModal
         isVisible={isModalOpen}
         item={selectedItem}
@@ -45,6 +46,6 @@ export const HomeScreen: React.FC<
           />
         }
       />
-    </>
+    </Layout>
   );
 };
