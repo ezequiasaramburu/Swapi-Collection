@@ -1,36 +1,14 @@
-interface IFilm {
-  url: string;
-}
-
-interface ISpecies {
-  url: string;
-}
-
-interface IVehicle {
-  url: string;
-}
-
-interface IStarship {
-  url: string;
-}
-
 interface IPeople {
+  id: number;
   name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
   gender: string;
-  homeworld: string;
-  films: IFilm[];
-  species: ISpecies[];
-  vehicles: IVehicle[];
-  starships: IStarship[];
-  created: string;
-  edited: string;
-  url: string;
+  skin_color: string;
+  hair_color: string;
+  height: string;
+  eye_color: string;
+  mass: string;
+  homeworld: number;
+  birth_year: string;
 }
 
 export default IPeople;

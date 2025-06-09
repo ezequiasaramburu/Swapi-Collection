@@ -24,14 +24,14 @@ export const ShopScreen: React.FC<DrawerNavigatorScreenProps<'ShopScreen'>> = ({
 
   const data: {title: string; data: (IVehicle | IStarship)[]}[] = [
     {title: 'VEHICLES', data: vehicle.data || []},
-    {title: 'STARHIPS', data: starship.data || []},
+    {title: 'STARSHIPS', data: starship.data || []},
   ];
 
   return (
     <Layout>
       <SectionList
         sections={data}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item, index) => item.id?.toString() || index.toString()}
         renderItem={({item}) => (
           <RenderItem
             item={item}

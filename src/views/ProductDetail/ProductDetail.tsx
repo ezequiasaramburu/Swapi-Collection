@@ -3,26 +3,40 @@ import {MainNavigatorScreenProps} from 'src/navigation/mainNavigator';
 import {Text, View} from 'react-native';
 import {styles} from './ProductDetail.styles';
 import Layout from 'src/components/Layout/Layout';
+import IVehicle from 'src/types/vehicle';
+import IStarship from 'src/types/starship';
 
 export const ProductDetailScreen: React.FC<
   MainNavigatorScreenProps<'ProductDetailScreen'>
 > = ({route}) => {
   const {selectedItem} = route.params;
 
-  const keys = [
-    {key: 'Name: ', value: selectedItem?.name},
-    {key: 'Model: ', value: selectedItem?.model},
-    {key: 'Length: ', value: selectedItem?.length},
-    {key: 'Crew: ', value: selectedItem?.crew},
-    {key: 'Passengers: ', value: selectedItem?.passengers},
-    {key: 'Manufacturer: ', value: selectedItem?.manufacturer},
-    {
-      key: 'Max Atmosphering Speed: ',
-      value: selectedItem?.max_atmosphering_speed,
-    },
-    {key: 'Cost In Credits: ', value: selectedItem?.cost_in_credits},
-    {key: 'Cargo Capacity: ', value: selectedItem?.cargo_capacity},
-  ];
+  // Create different key arrays based on whether it's a starship or vehicle
+  const getItemDetails = () => {
+    if (!selectedItem) {
+      return [];
+    }
+
+    if ('starship_class' in selectedItem) {
+      // It's a starship
+      const starship = selectedItem as IStarship;
+      return [
+        {key: 'ID: ', value: starship.id?.toString()},
+        {key: 'Starship Class: ', value: starship.starship_class},
+        {key: 'MGLT: ', value: starship.MGLT},
+        {key: 'Hyperdrive Rating: ', value: starship.hyperdrive_rating},
+      ];
+    } else {
+      // It's a vehicle
+      const vehicle = selectedItem as IVehicle;
+      return [
+        {key: 'ID: ', value: vehicle.id?.toString()},
+        {key: 'Vehicle Class: ', value: vehicle.vehicle_class},
+      ];
+    }
+  };
+
+  const keys = getItemDetails();
 
   return (
     <Layout>
@@ -31,7 +45,7 @@ export const ProductDetailScreen: React.FC<
           return (
             <Text style={styles.item} key={index}>
               {elem.key}
-              <Text style={styles.itemDetail}>{elem.value}</Text>
+              <Text style={styles.itemDetail}>{elem.value || 'N/A'}</Text>
             </Text>
           );
         })}

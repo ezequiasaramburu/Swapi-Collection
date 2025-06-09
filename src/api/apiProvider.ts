@@ -3,27 +3,24 @@ import IPeople from 'src/types/people';
 import IStarship from 'src/types/starship';
 import IVehicle from 'src/types/vehicle';
 
-interface Response<T> {
-  results: T[];
-}
 // on a real project this should be on an .env file
-const apiBaseUrl = 'https://swapi.dev/api';
+const apiBaseUrl = 'https://swapi.online/api';
 
 export const apiProvider = {
   fetchPeople: async (): Promise<IPeople[]> => {
-    const response = await fetch(`${apiBaseUrl}/people/`);
-    const data: Response<IPeople> = await response.json();
-    return data.results;
+    const response = await fetch(`${apiBaseUrl}/characters/`);
+    const responseData: IPeople[] = await response.json();
+    return responseData;
   },
   fetchStarships: async (): Promise<IStarship[]> => {
     const response = await fetch(`${apiBaseUrl}/starships/`);
-    const data: Response<IStarship> = await response.json();
-    return data.results;
+    const responseData: IStarship[] = await response.json();
+    return responseData;
   },
   fetchVehicles: async (): Promise<IVehicle[]> => {
     const response = await fetch(`${apiBaseUrl}/vehicles/`);
-    const data: Response<IVehicle> = await response.json();
-    return data.results;
+    const responseData: IVehicle[] = await response.json();
+    return responseData;
   },
 };
 
